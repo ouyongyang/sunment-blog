@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>三盟博客主页</title>
+    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/public.css">
+    <link rel="stylesheet" href="/css/plugs_paging.css">
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <div class="header">
+        <div class="am-topbar" style="margin-bottom: 0">
+            <h1 class="am-topbar-brand">
+                <a href="/jump/index" class="blogTitleName" id="blogTitleName"><img
+                        src="https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/logo.png" class="imgStyle">三盟博客</a>
+            </h1>
+            <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+                    style="background-color: #CCCCCC;border-color: white;border-radius: 6px"
+                    data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
+                    class="am-icon-bars"></span></button>
+
+            <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+                <ul class="am-nav am-nav-pills am-topbar-nav">
+                    <li><a class="top_bar" href="/jump/index" style="cursor: pointer;"><span class="fa fa-home"></span>&nbsp;博客首页</a>
+                    </li>
+                    <li><a class="top_bar" href="/jump/categories" style="cursor: pointer;"><span
+                            class="fa fa-th"></span>&nbsp;文章分类</a></li>
+                    <li><a class="top_bar" href="/jump/archives" style="cursor: pointer;"><span
+                            class="fa fa-archive"></span>&nbsp;时间归档</a></li>
+                    <li><a class="top_bar" href="/jump/tags" style="cursor: pointer;"><span class="fa fa-tags"></span>&nbsp;文章标签</a>
+                    </li>
+                    <!-- <li><a class="top_bar" href="/update" style="cursor: pointer;"><span class="fa fa-calendar-plus-o"></span>&nbsp;更新</a></li>-->
+                    <!--<li><a class="top_bar" href="/friendlylink" style="cursor: pointer;"><span class="fa fa-street-view"></span>&nbsp;友情链接</a></li>-->
+                    <li><a class="top_bar" href="/jump/aboutme" style="cursor: pointer;"><span class="fa fa-user"></span>&nbsp;关于三盟</a>
+                    </li>
+                </ul>
+
+                    <div class="am-u-lg-2 articleSearch">
+                        <div class="am-input-group am-input-group-primary">
+                            <input type="text" id="search" class="am-form-field">
+                             <span class="am-input-group-btn">
+                                   <button class="am-btn am-btn-primary" type="button" onclick="articleSearch()">
+                                       <span class="am-icon-search"></span>
+                                   </button>
+                             </span>
+                        </div>
+                    </div>
+
+
+                <div class="am-topbar-right" th:if="${#httpServletRequest.remoteUser}">
+                    <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
+                        <button class="personalSpace am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle"
+                                data-am-dropdown-toggle><span sec:authentication="name"></span> <span
+                                class="am-icon-caret-down"></span></button>
+                        <ul class="am-dropdown-content">
+                            <li><a href="/jump/personal" sec:authorize="hasRole('ROLE_ACCOUNT')">个人主页</a></li>
+                            <li><a href="/jump/Administrators" sec:authorize="hasRole('ROLE_SUPERADMIN')">网站后台管理</a>
+                            </li>
+
+                            <li><a class="feedbackClick">反馈</a></li>
+                            <hr style="margin: 10px 0 5px 0;">
+                            <li><a th:href="@{/logout}">退出登录</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="am-topbar-right writing am-hide-md-down">
+                    <a href="/jump/edit" target="_blank" style="text-decoration: none">
+                        <img class="am-circle"
+                             src="https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/loading.gif"
+                             data-src="https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/writing.png">
+                        <span class="write-word">写博客</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="main" style="margin-top: 16px">
+        <!--天气-->
+        <div class="radioBroadcast">
+            <i class="fa fa-volume-up" style="margin-left: 10px;color: #fbd602"></i>
+            <div class="roll">
+                <ul>
+                    <li class="today"></li>
+                    <li class="y1"></li>
+                    <li class="y2"></li>
+                    <li class="y3"></li>
+                    <li class="y4"></li>
+                    <li class="y5"></li>
+                    <li class="y6"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="am-g">
+            <!--左边开始-->
+            <div class="am-u-sm-12 am-u-lg-3 am-hide-md-down">
+                <div id="left">
+                    <div class="tag-cloud">
+                        <h3 class="widget-title">标签云</h3>
+                        <div class="widget-tag-cloud">
+                            <span>暂无标签</span>
+                        </div>
+                    </div>
+
+                    <div class="site-info am-hide-sm-only">
+                        <h5 class="site-title">
+                            <i class="fa fa-info site-icon"></i>
+                            <strong style="margin-left: 15px">网站信息</strong>
+                        </h5>
+                        <ul class="site-default" style="height: 200px">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--左边结束-->
+            <!--中间开始-->
+            <div class="showArticle am-u-sm-12 am-u-lg-6">
+                <div class="articles">
+                    <div class="center">
+                        <div class="empty">
+                            <header class="article-header">
+                                <h1 itemprop="name">
+                                    <a class="article-title" href="#" target="_blank">&nbsp;</a>
+                                </h1>
+                                <div class="article-meta row">
+                                    <span class="articleType am-badge am-badge-success">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+                                </div>
+                            </header>
+                            <div class="article-entry" style="height: 200px">
+                            </div>
+                            <div class="read-all">
+                                <a href="#" target="_blank">阅读全文 <i class="am-icon-angle-double-right"></i></a>
+                            </div>
+                            <hr>
+                            <div class="article-tags">
+                                <i class="am-icon-tag"><a class="tag" href="#"> &nbsp;&nbsp;&nbsp;&nbsp;</a></i>
+                                <i class="am-icon-tag"><a class="tag" href="#"> &nbsp;&nbsp;&nbsp;&nbsp;</a></i>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-row" id="page-father">
+                    <div id="pagination">
+                        <ul class="am-pagination  am-pagination-centered">
+                            <li class="am-disabled"><a href="#">&laquo; 上一页</a></li>
+                            <li class="am-active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">下一页 &raquo;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--中间结束-->
+            <!--右边开始-->
+            <div class="am-u-sm-12 am-u-lg-3">
+                <div id="right">
+
+                    <h3 class="widget-title">未来一周天气预报</h3>
+
+                    <div class="new-comment">
+                        <div data-am-widget="list_news" class="am-list-news am-list-news-default">
+                            <div class="am-list-news-hd am-cf">
+                                <a class="newComments">
+                                    <h2>最新评论</h2>
+                                </a>
+                            </div>
+                            <div class="am-list-news-bd">
+                                <ul class="am-list">
+                                    <li class="am-g am-list-item-dated" style="height: 62px">
+
+                                    </li>
+                                    <li class="am-g am-list-item-dated" style="height: 62px">
+
+                                    </li>
+                                    <li class="am-g am-list-item-dated" style="height: 62px">
+
+                                    </li>
+                                    <li class="am-g am-list-item-dated" style="height: 62px">
+
+                                    </li>
+                                    <li class="am-g am-list-item-dated" style="height: 62px">
+
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="new-leaveWord">
+                        <div data-am-widget="list_news" class="am-list-news am-list-news-default">
+                            <div class="am-list-news-hd am-cf">
+                                <a class="newLeaveWord">
+                                    <h2>最新留言</h2>
+                                </a>
+                            </div>
+                            <div class="am-list-news-bd">
+                                <ul class="am-list">
+                                    <li class="am-g am-list-item-dated" style="height: 62px">
+
+                                    </li>
+                                    <li class="am-g am-list-item-dated" style="height: 62px">
+
+                                    </li>
+                                    <li class="am-g am-list-item-dated" style="height: 62px">
+
+                                    </li>
+                                    <li class="am-g am-list-item-dated" style="height: 62px">
+
+                                    </li>
+                                    <li class="am-g am-list-item-dated" style="height: 62px">
+
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!--右边结束-->
+        </div>
+        <!--<div class="clear"></div>-->
+    </div>
+
+    <div class="footer">
+        <div class="footer am-u-sm-centered">
+            <div class="am-vertical-align" style="text-align: center">
+                <hr>
+                <div class="am-vertical-align-bottom">
+                    <div style="color: #009688">
+                        &copy; 2018 <i class="fa fa-coffee" style="margin: 0 5px"></i>三盟科技股份有限公司版权所有
+                    </div>
+                    <div id="footer" style="color: #009688">
+                        总访问量 <span id="totalVisitors"><strong></strong></span> 次 访客量 <span
+                            id="visitorVolume"><strong></strong></span> 人次
+                    </div>
+                    <div class="webLogo">
+                        <a href="http://www.miitbeian.gov.cn" target="_blank">
+
+                        </a>
+                    </div>
+                    <div class="webLogo">
+                        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51011402000164"
+                           target="_blank">
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--成功消息盒-->
+    <div class="notice successNoticeAlert am-animation-slide-top">
+        <span class="successNotice"></span>
+    </div>
+    <!--失败消息盒-->
+    <div class="notice dangerNoticeAlert am-animation-slide-top">
+        <span class="dangerNotice"></span>
+    </div>
+    <div class="feedback am-animation-slide-top">
+        <a class="feedbackClose am-close am-close-alt am-close-spin am-icon-times"></a>
+        <div class="feedbackTitle">
+            反馈
+        </div>
+        <div class="feedbackWord">
+            您对于本博客网站有任何意见或是存在Bug的地方，欢迎进行反馈
+        </div>
+        <div class="feedbackForm">
+            <form class="am-form">
+                <fieldset class="am-form-set">
+                    <textarea id="feedbackFormContent" placeholder="非常感谢您抽出时间填写问题反馈。必填"></textarea>
+                    <input type="text" class="feedbackFormQQ" placeholder="方便留下QQ或是微信联系你吗。选填">
+                </fieldset>
+                <button type="button" class="feedbackFormBtn am-btn am-btn-primary am-btn-block">提交反馈</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+<script src="/js/public.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/index_plugs_paging.js"></script>
+<script src="/js/plugs_paging.js"></script>
+</body>
+</html>

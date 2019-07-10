@@ -1,0 +1,181 @@
+body {
+    background: url("https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/login_bg.png") #2A87D2 no-repeat;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #EFEFEF inset;
+}
+
+#index_main {
+    width: 800px;
+    height: 600px;
+    margin: 100px 70px 70px 537px;
+    /*margin-top: 130px;*/
+    border-radius: 18px;
+    background:  #EFEFEF no-repeat;
+}
+
+
+#index_login_main {
+    width: 620px;
+    height: 403px;
+    padding: 30px 40px 0 0;
+    box-sizing: border-box;
+    float: right;
+}
+
+#index_login_main > i{
+    display: inline-block;
+    float: left;
+    margin-left: 50px;
+    width: 86px;
+    height: 40px;
+    background: url("https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/logo.png") no-repeat;
+}
+
+#index_login_main > .welcome_mess {
+    margin-left: 200px;
+    margin-top: 4px;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #0099CC;
+}
+
+
+
+#registerFormBtn {
+    width: 300px;
+    height: 42px;
+    line-height: 42px;
+    margin-left: 90px;
+    border-radius: 24px;
+    color: #fff;
+    text-align: center;
+    background-color: #50B6FF;
+    font-size: 17px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin-top: 32px;
+}
+
+
+#registerForm .input_warn{
+    margin-top: 7px;
+}
+#registerForm .input_warn span{
+    padding: 6px;
+    margin: 5px 0;
+    background-color: #d85a37;
+    color: white;
+    font-size: 15px;
+    border-radius: 3px;
+}
+.register_success{
+    text-align: center;
+}
+.register_success_img img{
+    width: 30%;
+}
+.gender_null{
+    margin: 7px 0 0 0;
+}
+#gender_null{
+    background-color: #d85a37;
+    width: 100%;
+    color: white;
+    padding: 6px;
+    font-weight: 400;
+    border-radius: 3px;
+}
+@media screen and (min-width: 768px) {
+    .register_success_img img{
+        width: 30%;
+        margin: 40px auto;
+    }
+    .register_success_words img{
+        margin-top: 20px;
+        width: 50px;
+    }
+    .register_success_words p{
+        font-size: 22px;
+        margin: 20px  10px 0;
+        font-family: 楷体;
+        color: orange;
+    }
+    .register_success_words{
+        text-align: center;
+        margin:10px auto;
+        width: 30%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .getAuthCodeBtn{
+        padding-left: 0;
+        float: right;
+        margin-right: 180px;
+        transform: translateY(-35px);
+    }
+    .iconsNull{
+        color: orange;
+        margin-right: 130px;
+    }
+    .iconsError{
+        color: red;
+        margin-right: 130px;
+    }
+    .iconsAuthCodeNull{
+        color: orange;margin-right: 340px;
+    }
+    .iconsAuthCodeError{
+        color: red;margin-right: 340px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .register_success_img img{
+        width: 60%;
+    }
+    .register_success_words img{
+        margin-top: 20px;
+        width: 40px;
+    }
+    .register_success_words p{
+        font-size: 15px;
+        margin: 20px  10px 0;
+        font-family: 楷体;
+        color: orange;
+    }
+    .register_success_words{
+        text-align: center;
+        margin:10px auto;
+        width: 60%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .getAuthCodeBtn{
+        padding-left: 0;
+        float: right;
+        transform: translateY(-35px);
+    }
+    .iconsNull{
+        color: orange;
+        margin-right: 60px;
+    }
+    .iconsError{
+        color: red;
+        margin-right: 60px;
+    }
+    .iconsAuthCodeNull{
+        color: orange;margin-right: 150px;
+    }
+    .iconsAuthCodeError{
+        color: red;margin-right: 150px;
+    }
+}
+#registerForm input{
+    width: 80%;
+}
+#registerForm label{
+    margin-right: 15px;
+}

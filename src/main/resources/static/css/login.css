@@ -1,0 +1,170 @@
+    body {
+    background: url("https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/login_bg.png") #2A87D2 no-repeat;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #EFEFEF inset;
+}
+
+#index_main {
+    width: 800px;
+    height: 440px;
+    margin: 100px 70px 70px 537px;
+    /*margin-top: 130px;*/
+    border-radius: 18px;
+    background: url("https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/index_main_bg2.png") #EFEFEF;
+}
+
+#index_logo {
+    width: 220px;
+    padding: 26px 0 0 62px;
+    display: block;
+}
+
+#index_logo > h1 > a > i {
+    display: inline-block;
+    float: left;
+    width: 86px;
+    height: 56px;
+    background: url("https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/index_logo.png") no-repeat;
+    background-size: 100%;
+}
+
+#index_logo > h1 > a > span {
+    height: 56px;
+    line-height: 56px;
+    font-size: 30px;
+    color: #4FB5FF;
+    float: left;
+    margin-left: 10px;
+}
+
+#index_login_main {
+    width: 430px;
+    height: 403px;
+    padding: 10px 40px 0 0;
+    box-sizing: border-box;
+    float: right;
+}
+
+#index_login_main > i{
+    display: inline-block;
+    float: left;
+    width: 86px;
+    height: 40px;
+    background: url("https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/logo.png") no-repeat;
+}
+
+#index_login_main > .welcome_mess {
+    margin-left: 130px;
+    margin-top: 4px;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #0099CC;
+}
+
+#reg_form {
+    margin-top: 50px;
+}
+    /*去掉ul的点*/
+    ul {
+        list-style: none;
+    }
+
+#reg_form > ul > li {
+    height: 60px;
+    line-height: 60px;
+    border-bottom: 1px solid #CCCCCC;
+    position: relative;
+}
+
+#reg_form > ul > li .clear_btn {
+    display: none;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    right: 26px;
+    background: url("https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/ipt_clear_cion.png");
+}
+
+#reg_form > ul > li .clear_btn.active {
+    background: url("https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/ipt_clear_cion_a.png");
+}
+
+#reg_form > ul > .pwd_li .clear_btn {
+    display: none !important;
+    background: url("https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/ipt_clear_cion_a.png");
+}
+
+#reg_form .login-label ·{
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#reg_form input {
+    width: 300px;
+    height: 46px;
+    text-indent: 2px;
+    font-size: 16px;
+    background: #EFEFEF;
+    border: none;
+    outline-style: none;
+}
+
+#reg_form .name-label {
+    background: url("https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/index_user.png");
+}
+
+#reg_form .password-label {
+    background: url("https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/index_password.png");
+}
+
+#loginBtn {
+    width: 300px;
+    height: 42px;
+    line-height: 42px;
+    margin: 13px auto;
+    border-radius: 24px;
+    color: #fff;
+    text-align: center;
+    background-color: #50B6FF;
+    font-size: 17px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin-top: 32px;
+}
+
+#reg_form > .sign_bottom_mess {
+    font-size: 16px;
+}
+
+#reg_form > .rememberMe{
+    font-size: 16px;
+}
+
+#reg_form > .rememberMe > input{
+    color: #4FB5FF;
+}
+
+#reg_form > .sign_bottom_mess > a {
+    color: #4FB5FF;
+}
+
+#togglepasswordBtn {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    right: 26px;
+    background: url("https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/ipt_pwd_icon.png");
+}
+
+#togglepasswordBtn.active {
+    background: url("https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/ipt_pwd_icon_a.png");
+}
+
+
+

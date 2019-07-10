@@ -1,0 +1,111 @@
+#app{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+#main {
+    flex-grow: 1;
+    margin-bottom: 50px;
+}
+/*导航条*/
+.am-topbar{
+    background-color:white;
+    box-shadow: -1px 0px 3px;
+}
+/*导航栏按钮*/
+.am-topbar-right a{
+    border-radius: 5px
+}
+/*鼠标碰到导航栏变色*/
+a.top_bar:hover{
+    color: #38b7ea;
+}
+/*首页商标*/
+.am-topbar-brand{
+    padding-left: 40px;
+}
+#blogTitleName{
+    color: #0099CC;
+    font-size: 22px;
+    margin-right:50px;
+}
+/*首页商标图片*/
+.imgStyle{
+    margin-bottom: 6px;
+    margin-right:20px;
+}
+
+.articleSearch{
+    margin-left: 116px;
+    margin-top: 6px;
+}
+
+/*写博客*/
+.writing{
+    margin: 12px 13px 0 0;
+}
+.writing img{
+    width: 27px;
+    border: 1px solid #d84b0e;
+}
+.writing span{
+    margin: 10px 0 0 2px;
+    color: #999999;
+}
+/*设置写文章按钮样式*/
+.write-word:hover{
+    color: #c62d08;
+}
+.write-word{
+    color: #999999;
+}
+/*底部*/
+#totalVisitors,#visitorVolume{
+    color: #009688;
+    font-weight: bold;
+    font-size: 19px
+}
+.webLogo a:hover{
+    color: #4398ed;
+    text-decoration: underline;
+}
+.webLogo a{
+    color: #009688;
+}
+
+
+.feedback{
+    display: none;
+    position: fixed;
+    top:20%;
+    left: 30%;
+    width: 500px;
+    background-color: #b5b5b5;
+}
+/*反馈*/
+.feedbackClick{
+    cursor: pointer;
+}
+.feedbackClose{
+    float: right;
+    margin: 7px 7px 0 0;
+}
+.feedbackTitle{
+    text-align: center;
+    font-size: 20px;
+    padding: 5px;
+    margin: 20px 0 0;
+}
+.feedbackWord{
+    text-align: center;
+    font-size: 11px;
+    margin: 5px 0;
+}
+.feedbackForm{
+    padding: 0 10px;
+    margin-bottom: 20px;
+}
+#feedbackFormContent{
+    height: 100px;
+    margin-bottom: 30px;
+}

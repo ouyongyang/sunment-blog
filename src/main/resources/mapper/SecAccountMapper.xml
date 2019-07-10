@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yang.sunment.repository.mybatis.SecAccountRepository">
+    <resultMap id="secAccountMap" type="com.yang.sunment.model.SecAccount">
+        <id property="id" column="id"/>
+        <result property="phone" column="phone"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="gender" column="gender"/>
+        <result property="trueName" column="trueName"/>
+        <result property="birthday" column="birthday"/>
+        <result property="age" column="age"/>
+        <result property="mail" column="mail"/>
+        <result property="lastLogintime" column="lastLogintime"/>
+        <result property="type" column="type"/>
+        <collection property="roles" ofType="com.yang.sunment.model.Role">
+            <result  property="name" column="name"/>
+        </collection>
+    </resultMap>
+
+    <select id="findByPhone" parameterType="String" resultMap="secAccountMap">
+        select sa.id,sa.phone,sa.username,sa.`password`,sa.gender,sa.true_name AS trueName,sa.birthday,sa.personal_profile AS personalProfile,sa.email,sa.last_logintime As lastLogintime,sa.avatar_images_url
+            As avatarImagesUrl,sa.type,r.name
+        from sec_account sa
+        LEFT JOIN sec_account_role scr on sa.id= scr.user_id
+        LEFT JOIN role r on scr.role_id=r.id
+        where phone= #{phone}
+    </select>
+</mapper>

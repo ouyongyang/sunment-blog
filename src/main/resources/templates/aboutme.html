@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>三盟博客主页</title>
+    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/public.css">
+    <link rel="stylesheet" href="/css/comment.css">
+    <link rel="stylesheet" href="/css/aboutme.css">
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="header">
+        <div class="am-topbar" style="margin-bottom: 0">
+            <h1 class="am-topbar-brand">
+                <a href="/jump/index" class="blogTitleName" id="blogTitleName"><img
+                        src="https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/logo.png" class="imgStyle">三盟博客</a>
+            </h1>
+            <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+                    style="background-color: #CCCCCC;border-color: white;border-radius: 6px"
+                    data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
+                    class="am-icon-bars"></span></button>
+
+            <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+                <ul class="am-nav am-nav-pills am-topbar-nav">
+                    <li><a class="top_bar" href="/jump/index" style="cursor: pointer;"><span class="fa fa-home"></span>&nbsp;博客首页</a>
+                    </li>
+                    <li><a class="top_bar" href="/jump/categories" style="cursor: pointer;"><span
+                            class="fa fa-th"></span>&nbsp;文章分类</a></li>
+                    <li><a class="top_bar" href="/jump/archives" style="cursor: pointer;"><span
+                            class="fa fa-archive"></span>&nbsp;时间归档</a></li>
+                    <li><a class="top_bar" href="/jump/tags" style="cursor: pointer;"><span class="fa fa-tags"></span>&nbsp;文章标签</a>
+                    </li>
+                    <!-- <li><a class="top_bar" href="/update" style="cursor: pointer;"><span class="fa fa-calendar-plus-o"></span>&nbsp;更新</a></li>-->
+                    <!--<li><a class="top_bar" href="/friendlylink" style="cursor: pointer;"><span class="fa fa-street-view"></span>&nbsp;友情链接</a></li>-->
+                    <li><a class="top_bar" href="/jump/aboutme" style="cursor: pointer;"><span class="fa fa-user"></span>&nbsp;关于三盟</a>
+                    </li>
+                </ul>
+
+                <div class="am-topbar-right" th:if="${#httpServletRequest.remoteUser}">
+                    <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
+                        <button class="personalSpace am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle"
+                                data-am-dropdown-toggle><span sec:authentication="name"></span> <span
+                                class="am-icon-caret-down"></span></button>
+                        <ul class="am-dropdown-content">
+                            <li><a href="/jump/personal" sec:authorize="hasRole('ROLE_ACCOUNT')">个人主页</a></li>
+                            <li><a href="/jump/Administrators" sec:authorize="hasRole('ROLE_SUPERADMIN')">网站后台管理</a>
+                            </li>
+
+                            <li><a class="feedbackClick">反馈</a></li>
+                            <hr style="margin: 10px 0 5px 0;">
+                            <li><a th:href="@{/logout}">退出登录</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="am-topbar-right writing am-hide-md-down">
+                    <a href="/jump/edit" target="_blank" style="text-decoration: none">
+                        <img class="am-circle"
+                             src="https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/loading.gif"
+                             data-src="https://zhy-myblog.oss-cn-shenzhen.aliyuncs.com/static/img/writing.png">
+                        <span class="write-word">写博客</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div class="am-container">
+            <div class="am-g">
+                <div class="am-u-sm-12 am-u-lg-12">
+                    <div id="wordsView">
+                        <div class="title">
+                            <div class="title-words">
+                                <h1 class="title-words-h1">公司概况</h1>
+                            </div>
+
+                            <div class="title-img">
+                                <p>
+                                    <img  data-src="https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/about_img.jpg" class="enlargePicture am-img-thumbnail am-radius">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="zhy-my-words"  data-am-scrollspy="{animation: 'scale-down'}">
+                            <p><i class="fa fa-quote-left fa-lg" style="float: left"></i></p><br>
+                            <div class="zhy-info">
+                                <p class="zhy-info-words">
+                                    三盟科技股份有限公司于2009年12月29日成立。位于万胜围D出口旁。法定代表人王喜英,公司经营范围包括：开发;软件开发;通信工程设计服务;通讯终端设备批发;计算机零售;软件零售;软件批发;信息技术咨询服务;计算机零配件零售;信息系统集成服务;安全技术防范产品零售;计算机技术开发、技术服务;安全技术防范产品批发;电子、通信与自动控制技术研究、开发;电子产品零售;通讯设备及配套设备批发;通信设备零售;信息电子技术服务;计算机批发;计算机零配件批发;多媒体设计服务;数据处理和存储服务;集成电路设计;广播设备及其配件批发;电视设备及其配件批发;电子元器件批发;电子产品批发;电线、电缆批发;电工器材的批发;电子元器件零售;家具零售;开关、插座、接线板、电线电缆、绝缘材料零售;建筑物电力系统安装;通信线路和设备的安装;监控系统工程安装服务;电子自动化工程安装服务;电子设备工程安装服务;智能化安装工程服务;保安监控及防盗报警系统工程服务;智能卡系统工程服务;通信系统工程服务;建筑物空调设备、通风设备系统安装服务;安全技术防范系统设计、施工、维修;室内装饰、设计;建筑工程后期装饰、装修和清理;等<br>
+                                    <br>
+                                    2016年8月18日，广东三盟科技股份有限公司(以下简称“三盟科技”)正式在全国中小企业股份转让系统(新三板)挂牌公开转让，证券简称“三盟科技”，股票代码839136。三盟科技是一家专注云计算、大数据、智慧教学、在线教育等前沿科技领域的高新技术企业，致力于为教育、政府等行业信息化建设提供软硬件产品及整体解决方案，目前三盟科技拥有云计算数据中心解决方案、高校大数据解决方案、智慧课室解决方案、云桌面解决方案、掌上移动教学解决方案、云安全等级保护解决方案、云计算人才培养解决方案、在线教育解决方案等八大解决方案，十大系列自研产品及二十项自主知识产权。
+                                </p>
+                            </div>
+                            <p><i class="fa fa-quote-right fa-lg" style="float: right"></i></p><br><hr>
+                        </div>
+
+
+                        <br><br><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
+
+                        <div style="text-align: right;margin: 30px auto">
+                            <i class="fa fa-paper-plane fa-spin"></i>
+                            <i class="fa fa-paper-plane-o fa-spin" style="margin-left: 60px"></i><br>
+                        </div>
+                        <div class="zhy-original">
+                            <div class="zhy-original-title">
+                                <h1 class="zhy-original-title-h1">公司定位</h1>
+                                <p class="zhy-erha">
+                                    <img data-src="https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/about_img3.jpg" class="enlargePicture am-img-thumbnail">
+                                </p><br><br>
+                                <p><i class="fa fa-quote-left fa-lg" style="float: left"></i></p><br>
+                                <div class="zhy-original-words">
+                                    <p>教育行业新一代信息技术应用创新领导品牌
+
+                                        大数据——教育行业大数据人工智能领军企业</p><br>
+                                    <p>智能控制及数据采集平台——软件定义教室专家，智慧校园建设领军企业
+
+                                        混合式教学及数据采集平台——混合式教学专家，高校智慧教学领军企业
+
+                                        云计算——高校私有云定制化专家，高校云数据中心领军企业</p><br>
+
+                                </div>
+                                <p><i class="fa fa-quote-right fa-lg" style="float: right"></i></p><br>
+                            </div>
+                        </div>
+                        <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
+                        <div class="zhy-opinion">
+                            <div class="zhy-opinion-title">
+                                <h1 style="font-size: 30px;font-weight: 400">公司使命</h1>
+                            </div>
+                            <div class="zhy-erha">
+                                <img  data-src="https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/job_img.jpg" class="enlargePicture am-img-thumbnail">
+                            </div>
+                            <div class="zhy-opinion-words">
+                                <p><strong><u><i>持续投入新技术应用创新研发，推进教育模式深度变革，助力学校智能化管理，个性化教学，精准化就业，为社会培养新型素质人才！</i></u></strong></p>
+                            </div>
+                        </div>
+                        <br><br><hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
+                        <div class="zhy-life">
+                            <div style="text-align: right;margin: 30px auto">
+                                <i class="fa fa-arrows fa-spin"></i>
+                                <i class="fa fa-arrows fa-spin" style="margin-left: 60px"></i><br>
+                            </div>
+                            <div class="zhy-life-title">
+                                <span>技术创新</span>
+                            </div>
+                            <div class="zhy-you">
+                                <img data-src="https://oyy-sunment.oss-cn-shenzhen.aliyuncs.com/static/images/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190522142917.png" class="enlargePicture am-img-thumbnail">
+                            </div>
+                            <p></p>
+                            <div class="content">
+                                <p>三盟科技坚持技术创新，针对教育行业核心需求开发出了大数据、人工智能、物联网、智能控制及数据采集、混合式教学
+                                    及数据采集、云计算等6大极具创新性和高价值的自研产品线。</p><br>
+                                <p>
+                                三盟科技大数据产品包括了大数据底层平台、数据治理服务、各业务部门使用的数据智能分析模块和针对大数据专业学生学习使用的大数据实训室。三盟科技目前所研发大数据所有产品模块，涵盖了师生服务、教学、管理、科研、就业五大方向，合计3000多款模型算法，即3000多个产品。其中比较经典的分析系统如心理健康、学生轨迹、学习轨迹、学生社交、精准资助等深受学校喜爱。</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--<div class="comment" style="margin: 100px auto 50px">
+                        <div class="comment-top">
+                            <div class="comment-top-input" th:if="${#httpServletRequest.remoteUser}">
+                                <textarea id="comment" placeholder="客官，来说两句吧..."></textarea>
+                            </div>
+                            <div class="comment-top-input" th:unless="${#httpServletRequest.remoteUser}">
+                                <div class="goToLogin">
+                                    &nbsp;&nbsp;&nbsp;<a id="toLogin">登录</a>后才可以发表留言呦...
+                                </div>
+                            </div>
+                            <div class="commentBtn">
+                                <button id="commentBtn" type="button" class="am-btn am-btn-secondary">发表留言</button>
+                            </div>
+                        </div>
+                        <div class="comment-bottom">
+
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer am-u-sm-centered">
+            <div class="am-vertical-align" style="text-align: center">
+                <hr>
+                <div class="am-vertical-align-bottom">
+                    <div style="color: #009688">
+                        &copy; 2018 <i class="fa fa-coffee" style="margin: 0 5px"></i>三盟科技股份有限公司版权所有
+                    </div>
+                    <div id="footer" style="color: #009688">
+                        总访问量 <span id="totalVisitors"><strong></strong></span> 次 访客量 <span
+                            id="visitorVolume"><strong></strong></span> 人次
+                    </div>
+                    <div class="webLogo">
+                        <a href="http://www.miitbeian.gov.cn" target="_blank">
+
+                        </a>
+                    </div>
+                    <div class="webLogo">
+                        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51011402000164"
+                           target="_blank">
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--成功消息盒-->
+    <div class="notice successNoticeAlert am-animation-slide-top">
+        <span class="successNotice"></span>
+    </div>
+    <!--失败消息盒-->
+    <div class="notice dangerNoticeAlert am-animation-slide-top">
+        <span class="dangerNotice"></span>
+    </div>
+    <div class="feedback am-animation-slide-top">
+        <a class="feedbackClose am-close am-close-alt am-close-spin am-icon-times"></a>
+        <div class="feedbackTitle">
+            反馈
+        </div>
+        <div class="feedbackWord">
+            您对于本博客网站有任何意见或是存在Bug的地方，欢迎进行反馈
+        </div>
+        <div class="feedbackForm">
+            <form class="am-form">
+                <fieldset class="am-form-set">
+                    <textarea id="feedbackFormContent" placeholder="非常感谢您抽出时间填写问题反馈。必填"></textarea>
+                    <input type="text" class="feedbackFormQQ" placeholder="方便留下QQ或是微信联系你吗。选填">
+                </fieldset>
+                <button type="button" class="feedbackFormBtn am-btn am-btn-primary am-btn-block">提交反馈</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script src="/js/public.js"></script>
+<script src="/js/leaveMessage.js"></script>
+<!--放大图片插件-->
+<script src="/js/lightgallery/lightgallery.js"></script>
+<script src="/js/lightgallery/picturefill.min.js"></script>
+<script src="/js/lightgallery/lg-pager.js"></script>
+<script src="/js/lightgallery/lg-autoplay.js"></script>
+<script src="/js/lightgallery/lg-fullscreen.js"></script>
+<script src="/js/lightgallery/lg-zoom.js"></script>
+<script>
+    lightGallery(document.getElementById('wordsView'));
+</script>
+</body>
+</html>

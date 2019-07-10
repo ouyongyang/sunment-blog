@@ -1,0 +1,337 @@
+.userInfo{
+    margin-bottom: 150px;
+}
+.userInfo hr{
+    margin-top: 23px;
+}
+/*设置左侧点击样式*/
+#personalDate{
+    display: block;
+    margin-top: 50px;
+    margin-left: 170px;
+    width: 60%;
+}
+.clickLi a:hover{
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #F0F0F0;
+}
+/*个人资料*/
+.headPortrait{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
+.headPortrait img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.headChange{
+    display: inline-block;
+    margin-left: 48px;
+}
+
+/*更改头像按钮*/
+.headPortraitChange a {
+    text-decoration: none;
+    color: #50B6FF;
+    display: block;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    text-align: center;
+    cursor: pointer;
+}
+.headPortraitChange:hover{
+    background-color: #50B6FF;
+}
+.headPortraitChange:hover a{
+    color: white;
+}
+.headPortraitChange{
+    display: inline-block;
+    width: 90px;
+    position: relative;
+    background: white;
+    border: 1px solid #50B6FF;
+    border-radius: 25px;
+    height: 40px;
+    line-height: 40px;
+    transform: translateY(15px);
+}
+.headPortraitChange input{
+    display: block;
+    width: 100%;
+    height: 45px;
+    opacity: 0;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+}
+.personalDateForm label{
+    font-size: 17px;
+    color: #969696;
+    width: 150px;
+}
+.personalDateForm{
+    margin-top: 40px;
+}
+.personalDateForm textarea{
+    height: 100px;
+    width: 65%;
+}
+/*input输入框*/
+.formInput{
+    padding: 5px 10px;
+    font-size: 15px;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    background-color: hsla(0,0%,71%,.1);
+}
+.phone{
+    display: inline-block;
+    padding: 5px 0;
+    font-size: 15px;
+}
+.phoneCheck{
+    padding: 0 10px;
+    font-size: 12px;
+    color: #969696;
+}
+.formInput{
+    padding: 5px 10px;
+    font-size: 15px;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    background-color: hsla(0,0%,71%,.1);
+}
+/*按钮*/
+.savePersonalDateBtn,.changePasswordBtn{
+    border-radius: 65px;
+    margin-bottom: 70px;
+}
+/*成功提示css*/
+.successNoticeAlert{
+    display: none;
+    position: absolute;
+    top:0%;
+    left:40%;
+    border: 1px solid #62c812;
+    color: #62c812;
+    padding:10px 25px;
+    border-radius: 5px;
+}
+/*警告提示css*/
+.dangerNoticeAlert{
+    display: none;
+    position: absolute;
+    top:0%;
+    left:40%;
+    border: 1px solid #bb4a3c;
+    color: #ff3023;
+    padding:10px 25px;
+    border-radius: 5px;
+}
+
+
+/*修改密码*/
+#basicSetting,#privateWord{
+    display: none;
+    margin-top: 50px;
+    margin-left: 170px;
+    width: 60%;
+}
+#basicSettingForm label{
+    font-size: 17px;
+    color: #969696;
+    width: 150px;
+}
+/*表单输入框*/
+.formInput{
+    padding: 5px 10px;
+    font-size: 15px;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    background-color: hsla(0,0%,71%,.1);
+}
+
+
+/*评论留言*/
+#leaveMessage{
+    display: none;
+    margin-top: 50px;
+    margin-left: 100px;
+    width: 80%;
+}
+
+#myArticle{
+    display: none;
+    margin-top: 50px;
+    margin-left: 100px;
+    width: 80%;
+}
+#deleteArticle{
+    margin-left: 10px;
+}
+
+/*评论留言*/
+.leaveMessageTitle{
+    padding: 10px 110px 10px 0!important;
+}
+.leaveMessageContent{
+    padding: 2px 80px 5px 0;
+    display: inline-block;
+    color: #999;
+
+}
+.reply{
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+    padding: 5px 0;
+}
+/*没有评论留言*/
+.noLeaveMessage,.noComment{
+    height: 30px;
+    background: #f0f0f0;
+    text-align: center;
+    opacity: .5;
+    line-height: 30px;
+}
+
+
+
+/*联系管理员*/
+.yesterday{
+    margin-top: 70px;
+    margin-bottom: 150px;
+}
+.word{
+    display: block;
+    line-height: 25px;
+    font-size: 15px;
+    font-family: 幼圆;
+}
+.noYesterday{
+    height: 30px;
+    background: #f0f0f0;
+    text-align: center;
+    opacity: .5;
+    line-height: 30px;
+    margin-bottom: 150px;
+}
+.say{
+    background-color: hsla(0,0%,71%,.1);
+    padding: 3px 10px 0;
+    margin-bottom: 5px;
+}
+.youSayTime{
+    text-align: center;
+    font-family: 隶书;
+    font-size: 15px;
+    color: #cc2808;
+    margin-bottom: 10px;
+}
+.you{
+    text-align: left;
+    font-size: 13px;
+    color: #3068b6;
+}
+.me{
+    text-align: right;
+    font-size: 13px;
+    color: #90b610;
+}
+.noReply{
+    color: red;
+}
+.userSayBtn{
+    float: right;
+}
+
+
+.oyy-privateWord,.oyy-leaveMessage{
+    padding: 30px 20px;
+}
+
+
+
+
+/*我的文章*/
+.center{
+    border:  1px solid silver;
+    padding: 0 0 20px 20px;
+    margin: 0 0 25px;
+    box-shadow: 0 2px 5px 0 rgba(33, 22, 22, 0.2), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+/*文章*/
+.article-header h1{
+    margin-top: 14px;
+}
+a.article-title:hover{
+    color: #38b7ea;
+    text-decoration: underline;
+}
+.article-title{
+    font-weight: 500;
+}
+.article-title{
+    font-size: 24px;
+    color: #7f7f7f;
+}
+.article-meta i{
+    margin-left: 5px;
+    font-size: 15px;
+    color: #63676d;
+}
+.articleType{
+    border-radius: 5px;
+}
+.articlePublishDate,.originalAuthor,.categories{
+    display: inline-block;
+}
+a.linkColor:hover{
+    color: #38b7ea;
+    text-decoration: underline;
+}
+a.linkColor{
+    color: #63676d;
+}
+.article-entry{
+    font-size: 16px;
+    padding: 10px 8px;
+    line-height: 2em;
+    color: #565a5f;
+}
+.read-all{
+    margin-left: 7px;
+}
+.read-all a{
+    padding: 3px 0;
+    border-bottom: 2px solid;
+    text-decoration: none;
+    color: #7f7f7f;
+}
+.read-all a:hover{
+    color: #38b7ea;
+    border-bottom: 2px solid #7f7f7f;
+}
+.article-tags i{
+    color: #63676d;
+    margin: 10px 5px 0 0;
+}
+.article-tags a{
+    color: #777c83;
+    text-decoration: none;
+}
+
+
+
+
+.right{
+    margin-left: 520px;
+}
